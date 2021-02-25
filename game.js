@@ -71,17 +71,29 @@ var reset = function () {
 // Update game objects - change player position based on key pressed
 var update = function (modifier) {
   if (38 in keysDown) { // Player is holding up key
-    hero.y -= hero.speed * modifier;
-  }
-  if (40 in keysDown) { // Player is holding down key
-    hero.y += hero.speed * modifier;
-  }
-  if (37 in keysDown) { // Player is holding left key
-    hero.x -= hero.speed * modifier;
-  }
-  if (39 in keysDown) { // Player is holding right key
-    hero.x += hero.speed * modifier;
-  }
+   new_position = hero.y - (hero.speed* modifier);
+   if (new_position > 0) {
+       hero.y = new_position;
+   }
+}
+ if (40 in keysDown) { // Player is holding down key
+   new_position = hero.y + (hero.speed* modifier);
+   if (new_position < 480) {
+       hero.y = new_position;
+   }
+}
+ if (37 in keysDown) { // Player is holding left key
+   new_position = hero.x - (hero.speed* modifier);
+   if (new_position > 0) {
+       hero.x = new_position;
+   }
+}
+ if (39 in keysDown) { // Player is holding right key
+   new_position = hero.x + (hero.speed* modifier);
+   if (new_position < 512) {
+       hero.x = new_position;
+   }
+}
 
   // Check if player and monster collider
   if (

@@ -121,11 +121,11 @@ hero.x <= (monster2.x + 32)
     ){
 
      ++monstersCaught;
-    reset();
+  
   }
   if  ((monster1Ready == false) && (monster2Ready == false)) { 
-    monster1Ready = true;
-    monster2Ready = true;
+    monster1Ready = false;
+    monster2Ready = false;
     reset(); 
  } 
 };

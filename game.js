@@ -26,20 +26,29 @@ heroImage.onload = function () {
 };
 heroImage.src = "images/hero.png";
 // Load the monster image
-var monsterReady = false;
-var monsterImage = new Image();
-monsterImage.onload = function () {
+var monster1Ready = false;
+var monster1Image = new Image();
+monster1Image.onload = function () {
   // show the monster image
-  monsterReady = true;
+  monster1Ready = true;
 };
-monsterImage.src = "images/monster.png";
+monster1Image.src = "images/monster.png";
+// Load the monster image
+var monster2Ready = false;
+var monster2Image = new Image();
+monster2Image.onload = function () {
+  // show the monster image
+  monster2Ready = true;
+};
+monster2Image.src = "images/monster.png";
 // Create the game objects
 var hero = {
   speed: 256, // movement speed of hero in pixels per second
   height: 36,
   width: 31
 };
-var monster = {};
+var monster1 = {};
+var monster2 = {};
 var monstersCaught = 0;
 // Handle keyboard controls
 var keysDown = {};
@@ -56,8 +65,13 @@ var reset = function () {
   hero.x = canvas.width /2;
   hero.y = canvas.height /2 ;
   // Place the monster somewhere on the canvas randomly
-  monster.x = 32 + (Math.random() * (canvas.width - 64));
-  monster.y = 32 + (Math.random() * (canvas.height - 64));
+  monster1.x = 32 + (Math.random() * (canvas.width - 64));
+  monster1.y = 32 + (Math.random() * (canvas.height - 64));
+  
+  monster2.x = 32 + (Math.random() * (canvas.width - 64));
+  monster2.y = 32 + (Math.random() * (canvas.height - 64));
+
+
 };
 // Update game objects - change player position based on key pressed
 var update = function (modifier) {
@@ -91,14 +105,29 @@ if (39 in keysDown) { // Player is holding right key
 }
   // Check if player and monster collider
   if (
-    hero.x <= (monster.x + 32)
-    && monster.x <= (hero.x + 32)
-    && hero.y <= (monster.y + 32)
-    && monster.y <= (hero.y + 32)
+    hero.x <= (monster1.x + 32)
+    && monster1.x <= (hero.x + 32)
+    && hero.y <= (monster1.y + 32)
+    && monster1.y <= (hero.y + 32)
   ) {
     ++monstersCaught;
-    reset();
+    monster1Ready= false 
   }
+  if (
+hero.x <= (monster2.x + 32)
+    && monster2.x <= (hero.x + 32)
+    && hero.y <= (monster2.y + 32)
+    && monster2.y <= (hero.y + 32)
+    ){
+
+     ++monstersCaught;
+  monster2Ready= false 
+  }
+  if  ((monster1Ready == false) && (monster2Ready == false)) { 
+    monster1Ready = false;
+    monster2Ready = false;
+    reset(); 
+ } 
 };
 // Draw everything on the canvas
 var render = function () {
@@ -108,14 +137,18 @@ var render = function () {
   if (heroReady) {
     ctx.drawImage(heroImage, hero.x, hero.y);
   }
-  if (monsterReady) {
-    ctx.drawImage(monsterImage, monster.x, monster.y);
+  if (monster1Ready) {
+    ctx.drawImage(monster1Image, monster1.x, monster1.y);
   }
+  if (monster2Ready) {
+    ctx.drawImage(monster2Image, monster2.x, monster2.y);
+  }
+
   // Display score and time
   ctx.fillStyle = "rgb(250, 250, 250)";
   ctx.font = "24px Helvetica";
   ctx.textAlign = "left";
-  ctx.textBaseline = "top";
+  ctx.textBaseline = "top"; 
   ctx.fillText("Monsters caught: " + monstersCaught, 20, 20);
   ctx.fillText("Time: " + count, 20, 50);
   // Display game over message when timer finished

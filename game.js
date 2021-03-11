@@ -105,10 +105,10 @@ if (39 in keysDown) { // Player is holding right key
 }
   // Check if player and monster collider
   if (
-    hero.x <= (monster.x + 32)
-    && monster.x <= (hero.x + 32)
-    && hero.y <= (monster.y + 32)
-    && monster.y <= (hero.y + 32)
+    hero.x <= (monster1.x + 32)
+    && monster1.x <= (hero.x + 32)
+    && hero.y <= (monster1.y + 32)
+    && monster1.y <= (hero.y + 32)
   ) {
     ++monstersCaught;
     reset();
@@ -198,7 +198,6 @@ main();
   if(finished==true){
     ctx.fillText("Game over!", 200, 220);
   }
-};
 var count = 30; // how many seconds the game lasts for - default 30
 var finished = false;
 var counter =function(){

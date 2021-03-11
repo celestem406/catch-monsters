@@ -48,14 +48,15 @@ monster2Image.onload = function () {
   // show the monster image
   monster2Ready = true;
 };
-monsterImage.src = "images/monster.png";
+monster2Image.src = "images/monster.png";
 // Create the game objects
 var hero = {
   speed: 256, // movement speed of hero in pixels per second
   height: 36,
   width: 31
 };
-var monster = {};
+var monster1 = {};
+var monster2 = {};
 var monstersCaught = 0;
 // Handle keyboard controls
 var keysDown = {};
@@ -72,8 +73,13 @@ var reset = function () {
   hero.x = canvas.width /2;
   hero.y = canvas.height /2 ;
   // Place the monster somewhere on the canvas randomly
-  monster.x = 32 + (Math.random() * (canvas.width - 64));
-  monster.y = 32 + (Math.random() * (canvas.height - 64));
+  monster1.x = 32 + (Math.random() * (canvas.width - 64));
+  monster1.y = 32 + (Math.random() * (canvas.height - 64));
+  
+  monster2.x = 32 + (Math.random() * (canvas.width - 64));
+  monster12y = 32 + (Math.random() * (canvas.height - 64));
+
+
 };
 // Update game objects - change player position based on key pressed
 var update = function (modifier) {
@@ -127,44 +133,6 @@ var render = function () {
   if (monsterReady) {
     ctx.drawImage(monsterImage, monster.x, monster.y);/*
 */
-// Create the canvas for the game to display in
-var canvas = document.createElement("canvas");
-var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
-document.body.appendChild(canvas);
-// Load the background image
-var bgReady = false;
-var bgImage = new Image();
-bgImage.onload = function () {
-  // show the background image
-  bgReady = true;
-};
-bgImage.src = "images/background.png";
-// Load the hero image
-var heroReady = false;
-var heroImage = new Image();
-heroImage.onload = function () {
-  // show the here image
-  heroReady = true;
-};
-heroImage.src = "images/hero.png";
-// Load the monster image
-var monsterReady = false;
-var monsterImage = new Image();
-monsterImage.onload = function () {
-  // show the monster image
-  monsterReady = true;
-};
-monsterImage.src = "images/monster.png";
-// Load the monster image
-var monster1Ready = false;
-var monster1Image = new Image();
-monster1Image.onload = function () {
-  // show the monster image
-  monster1Ready = true;
-};
-monster1Image.src = "images/monster.png";
 // Load the monster image
 var monster2Ready = false;
 var monster2Image = new Image();

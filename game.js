@@ -41,6 +41,7 @@ monster2Image.onload = function () {
   monster2Ready = true;
 };
 monster2Image.src = "images/monster.png";
+
 // Create the game objects
 var hero = {
   speed: 256, // movement speed of hero in pixels per second
@@ -65,11 +66,11 @@ var reset = function () {
   hero.x = canvas.width /2;
   hero.y = canvas.height /2 ;
   // Place the monster somewhere on the canvas randomly
-  monster1.x = 32 + (Math.random() * (canvas.width - 64));
-  monster1.y = 32 + (Math.random() * (canvas.height - 64));
+  monster1.x = 32 + (Math.random() * (canvas.width - 512));
+  monster1.y = 32 + (Math.random() * (canvas.height - 480));
   
-  monster2.x = 32 + (Math.random() * (canvas.width - 64));
-  monster2.y = 32 + (Math.random() * (canvas.height - 64));
+  monster2.x = 32 + (Math.random() * (canvas.width + 155));
+  monster2.y = 32 + (Math.random() * (canvas.height + 155));
 
 
 };
@@ -170,7 +171,8 @@ var counter =function(){
        finished = true;
        count=0;
        // hider monster and hero
-       monsterReady=false;
+       monster1Ready=false;
+       monster2Ready=false;
        heroReady=false;
     }
 }

@@ -66,21 +66,22 @@ var reset = function () {
   hero.x = canvas.width /2;
   hero.y = canvas.height /2 ;
   // Place the monster somewhere on the canvas randomly
-  monster1.x = 32 + (Math.random() * (canvas.width - 512));
-  monster1.y = 32 + (Math.random() * (canvas.height - 480));
+  monster1.x = 0 
+  monster1.y = 0 
   
-  monster2.x = 32 + (Math.random() * (canvas.width + 155));
-  monster2.y = 32 + (Math.random() * (canvas.height + 155));
+  monster2.x = 448
+  monster2.y = 0
 
 
 };
 // Update game objects - change player position based on key pressed
-var update = function (modifier) {
+var update = function (modifier) {;
   if (38 in keysDown) { // Player is holding up key
    new_position =  hero.y - (hero.speed * modifier);
     if (new_position > 0) {
         hero.y = new_position;
     }
+}
 }
 if (40 in keysDown) { // Player is holding down key
     new_position =  hero.y + (hero.speed * modifier);
@@ -129,7 +130,7 @@ hero.x <= (monster2.x + 32)
     monster2Ready = false;
     reset(); 
  } 
-};
+;
 // Draw everything on the canvas
 var render = function () {
   if (bgReady) {

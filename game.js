@@ -75,13 +75,12 @@ var reset = function () {
 
 };
 // Update game objects - change player position based on key pressed
-var update = function (modifier) {;
+var update = function (modifier) {
   if (38 in keysDown) { // Player is holding up key
    new_position =  hero.y - (hero.speed * modifier);
     if (new_position > 0) {
         hero.y = new_position;
     }
-}
 }
 if (40 in keysDown) { // Player is holding down key
     new_position =  hero.y + (hero.speed * modifier);
@@ -130,7 +129,7 @@ hero.x <= (monster2.x + 32)
     monster2Ready = false;
     reset(); 
  } 
-;
+};
 // Draw everything on the canvas
 var render = function () {
   if (bgReady) {

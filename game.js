@@ -69,7 +69,7 @@ var reset = function () {
   monster1.x = 0 
   monster1.y = 0 
   
-  monster2.x = 448
+  monster2.x = 466
   monster2.y = 0
 
 
